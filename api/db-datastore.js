@@ -6,17 +6,25 @@ function key(id) {
   return datastore.key([kind, id]);
 }
 
-module.exports.list = async (id) => {
-  let [data] = await datastore.createQuery(kind).select('name').order('name').run();
-  data = data.map((val) => val.name);
-  return data;
-};
-
 module.exports.get = async (id) => {
-  const [data] = await ds.get(key(id));
+  const [data] = await datastore.get(key(id));
   if (data && data.val) return data.val;
   return '';
 };
+
+module.exports.post = async (id, val) => {
+    const [data] = await datastore.get(key(id));
+    if (data && data.val) {
+        val = parseInt(val) + parseInt(data.val);
+    }
+      const entity = {
+        key: key(id),
+        data: { name: id, val },
+      }
+      await datastore.save(entity);
+      return `${val}`;
+};
+
 
 module.exports.put = async (id, val) => {
   const entity = {
