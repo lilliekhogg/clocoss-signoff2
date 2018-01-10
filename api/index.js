@@ -25,19 +25,18 @@ app.get('/:id(\\w+)', async (req, res) => {
   }
 });
 
-
-app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
+app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
-    res.send(await db.post(req.params.id, req.body));
+    res.send(await db.put(req.params.id, req.body));
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
   }
 });
 
-app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
+app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
-    res.send(await db.put(req.params.id, req.body));
+    res.send(await db.post(req.params.id, req.body));
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
