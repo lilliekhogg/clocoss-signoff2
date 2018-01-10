@@ -1,18 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const api = express.Router();
+const app = express.Router();
 
 
 const db = require(`./db-datastore`);
 
 
 
-api.get('/', async (req, res) => {
+app.get('/', async (req, res) => {
     res.sendStatus(200);
 
 });
 
-api.get('/:id(\\w+)', async (req, res) => {
+app.get('/:id(\\w+)', async (req, res) => {
   try {
     res.send(await db.get(req.params.id));
   } catch (e) {
@@ -31,7 +31,7 @@ app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
-api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
+app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     res.send(await db.put(req.params.id, req.body));
   } catch (e) {
@@ -50,4 +50,4 @@ app.delete('/:id(\\w+)', async (req, res) => {
 });
 
 
-module.exports = api;
+module.exports = app;
