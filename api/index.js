@@ -8,8 +8,12 @@ const db = require(`./db-datastore`);
 
 
 app.get('/', async (req, res) => {
-    res.sendStatus(200);
-
+  try {
+    res.json(await db.list());
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  }
 });
 
 app.get('/:id(\\w+)', async (req, res) => {
