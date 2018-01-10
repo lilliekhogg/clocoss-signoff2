@@ -1,6 +1,6 @@
 runtime: nodejs
 env: flex
-service: lillie-app
+service: lillie-signoff2
 automatic_scaling:
   min_num_instances: 1
   max_num_instances: 3
