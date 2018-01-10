@@ -8,8 +8,8 @@ function key(id) {
 
 module.exports.get = async (id) => {
   const [data] = await datastore.get(key(id));
-  if (data && data.val) return data.val;
-  return '';
+  if (data && data.val) return `${data.val}`;
+  return '0';
 };
 
 module.exports.post = async (id, val) => {
