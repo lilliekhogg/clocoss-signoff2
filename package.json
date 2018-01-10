@@ -1,7 +1,7 @@
 {
   "name": "clocoss2",
   "version": "1.0.0",
-  "description": "",
+  "description": "clocoss signoff2",
   "main": "index.js",
   "scripts": {
     "start": "node app.js"
