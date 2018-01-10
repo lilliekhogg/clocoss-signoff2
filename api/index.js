@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express.Router();
 
-
+module.exports = app;
 const db = require(`./db-datastore`);
 
 
@@ -52,6 +52,3 @@ app.delete('/:id(\\w+)', async (req, res) => {
     res.sendStatus(500)
   }
 });
-
-
-module.exports = app;
