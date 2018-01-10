@@ -2,7 +2,7 @@
   "name": "clocoss-signoff2",
   "version": "1.0.0",
   "description": "clocoss signoff2",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "node app.js"
   },
