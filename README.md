@@ -15,4 +15,4 @@ Dependancies may need to be applied first if they are not already installed on y
 3. npm install
 4. you can test that it works using : DBTYPE=inmemory npm start
   - it will be available on port 8080
-5. Deploy the app thorough your app engine, or run node app
+5. Deploy the app thorough using gcloud deploy app, or run node app
