@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express.Router();
 
-module.exports = app;
+//requiring datastore
 const db = require(`./db-datastore`);
 
 
@@ -16,6 +16,7 @@ app.get('/', async (req, res) => {
   }
 });
 
+//retrieves value of ID
 app.get('/:id(\\w+)', async (req, res) => {
   try {
     res.send(await db.get(req.params.id));
@@ -25,6 +26,7 @@ app.get('/:id(\\w+)', async (req, res) => {
   }
 });
 
+//overwritin existing value with ID 
 app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     res.send(await db.put(req.params.id, req.body));
@@ -34,6 +36,7 @@ app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
+//send data entry to be added to datastore
 app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     res.send(await db.post(req.params.id, req.body));
@@ -42,7 +45,7 @@ app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
     res.sendStatus(500);
   }
 });
-
+//deleting the datastore entry if ID is the same
 app.delete('/:id(\\w+)', async (req, res) => {
   try {
     await db.delete(req.params.id);
@@ -52,3 +55,5 @@ app.delete('/:id(\\w+)', async (req, res) => {
     res.sendStatus(500)
   }
 });
+
+module.exports = app;
